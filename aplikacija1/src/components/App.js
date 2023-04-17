@@ -8,6 +8,9 @@ import person from './utilities/Person';
 // import Person from "./utilities/Person";
 // import { sum, pi, imeAplikacije as mojaVariabla} from "./utilities/Utility";
 
+//5.5
+import Komponenta1 from "./Komponenta1";
+
 
 
 function App() {
@@ -15,24 +18,32 @@ function App() {
   var rndStr = randomstring.generate();
   console.log(rndStr);
   var od = oduzmi(num1, num2);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {mojaVariabla}, {rndStr}, {person.name}, {zbroj}, {od}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  /////
+  //5.5
+  var prva = "prvi text";
+  var druga = "drugi text";
+
+  return Komponenta1;
+
+  // return (
+  //   <div className="App">
+  //     <header className="App-header">
+  //       <img src={logo} className="App-logo" alt="logo" />
+  //       <p>
+  //         {mojaVariabla}, {rndStr}, {person.name}, {zbroj}, {od}
+  //       </p>
+  //       <a
+  //         className="App-link"
+  //         href="https://reactjs.org"
+  //         target="_blank"
+  //         rel="noopener noreferrer"
+  //       >
+  //         Learn React
+  //       </a>
+  //     </header>
+  //   </div>
+  // );
 }
 
 export default App;
