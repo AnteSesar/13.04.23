@@ -9,8 +9,9 @@ import person from './utilities/Person';
 // import { sum, pi, imeAplikacije as mojaVariabla} from "./utilities/Utility";
 
 //5.5
-import Komponenta1 from "./Komponenta1";
-
+import { Komponenta1 } from "./Komponenta1";
+import { Komponenta2 } from "./Komponenta2";
+import Komponenta3 from "./Komponenta3";
 
 
 function App() {
@@ -21,29 +22,31 @@ function App() {
 
   /////
   //5.5
-  var prva = "prvi text";
-  var druga = "drugi text";
+  var prva = "prvi-text";
+  var druga = "drugi-text";
 
-  return Komponenta1;
 
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         {mojaVariabla}, {rndStr}, {person.name}, {zbroj}, {od}
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          {mojaVariabla}, {rndStr}, {person.name}, {zbroj}, {od}
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <Komponenta1/>
+      <Komponenta2 podatak1={prva}/>
+      <Komponenta3 podatak1={prva} podatak2={druga}/>
+    </div>
+  );
 }
 
 export default App;
