@@ -13,6 +13,30 @@ import { Komponenta1 } from "./Komponenta1";
 import { Komponenta2 } from "./Komponenta2";
 import Komponenta3 from "./Komponenta3";
 
+//5.6
+import { GlavnaKomponenta } from "./GlavnaKomponenta";
+import React from 'react';
+
+//5.7
+// "import React from 'react';" opet
+import { WelcomeFunkcija } from "./WelcomeFunkcija"
+import { WelcomeKlasa } from "./WelcomeKlasa"
+
+// function WelcomeFunkcija() {
+//   return (
+//   <h2>Welcome! Komponenta definirana funkcijom.</h2>
+//   );
+// }
+
+
+// class WelcomeKlasa extends React.Component {
+//   render() {
+//     return (
+//       <h2>Welcome! Komponenta definirana klasom.</h2>
+//     );
+//   }
+// }
+
 
 function App() {
   var zbroj = sum(10, 12) * pi;
@@ -24,6 +48,8 @@ function App() {
   //5.5
   var prva = "prvi-text";
   var druga = "drugi-text";
+
+
 
 
   return (
@@ -45,6 +71,11 @@ function App() {
       <Komponenta1/>
       <Komponenta2 podatak1={prva}/>
       <Komponenta3 podatak1={prva} podatak2={druga}/>
+
+      <GlavnaKomponenta/>
+
+      <WelcomeFunkcija/>
+      <WelcomeKlasa/>
     </div>
   );
 }
