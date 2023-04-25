@@ -22,6 +22,17 @@ import React from 'react';
 import { WelcomeFunkcija } from "./WelcomeFunkcija"
 import { WelcomeKlasa } from "./WelcomeKlasa"
 
+//5.8
+// "import React from 'react';" opet opet
+// promjenili smo app iz "function" u "class"
+import KorisnikKlasa from './KorisnikKlasa';
+import KorisnikFunkcija from './KorisnikFunkcija';
+import KorisnikDjete from './KorisnikDjete';
+
+//5.9
+
+
+////
 // function WelcomeFunkcija() {
 //   return (
 //   <h2>Welcome! Komponenta definirana funkcijom.</h2>
@@ -37,9 +48,35 @@ import { WelcomeKlasa } from "./WelcomeKlasa"
 //   }
 // }
 
+
+
+
 // App je bila funkcija, sada je klasa... zbog zadatka 5.8
 class App extends React.Component {
+
+  state = {
+    korisnici : [
+      {ime: "Marko", godine: 27},
+      {ime: "Katarina", godine: 21},
+      {ime: "Nataša", godine: 20},
+      {ime: "Sunčica", godine: 5}
+    ],
+    dodatni_tekst : "Ona voli plivati i gnjuriti."
+  };
+
+  promjeniGodine = () => {
+    const {korisnici} = this.state;
+    const novikorisnici = korisnici.map( korisnik =>
+      {
+      return {...korisnik, godine: korisnik.godine + 1 }
+      }
+      );
+      this.setState({korisnici: novikorisnici});
+  }
+
   render() {
+  const {korisnici, dodatni_tekst} = this.state;
+
   var zbroj = sum(10, 12) * pi;
   var rndStr = randomstring.generate();
   console.log(rndStr);
@@ -77,6 +114,13 @@ class App extends React.Component {
 
       <WelcomeFunkcija/>
       <WelcomeKlasa/>
+
+      <KorisnikKlasa ime={korisnici[0].ime} godine={korisnici[0].godine} onButtonClick={this.promjeniGodine}/>
+      <KorisnikKlasa ime={korisnici[1].ime} godine={korisnici[1].godine} onButtonClick={this.promjeniGodine}/>
+      <KorisnikFunkcija ime={korisnici[2].ime} godine={korisnici[2].godine}/>
+      <KorisnikDjete ime={korisnici[3].ime} godine={korisnici[3].godine}>
+        {dodatni_tekst}
+      </KorisnikDjete>
     </div>
   );
   };
