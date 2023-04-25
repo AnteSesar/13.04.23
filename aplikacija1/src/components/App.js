@@ -37,8 +37,9 @@ import { WelcomeKlasa } from "./WelcomeKlasa"
 //   }
 // }
 
-
-function App() {
+// App je bila funkcija, sada je klasa... zbog zadatka 5.8
+class App extends React.Component {
+  render() {
   var zbroj = sum(10, 12) * pi;
   var rndStr = randomstring.generate();
   console.log(rndStr);
@@ -78,6 +79,7 @@ function App() {
       <WelcomeKlasa/>
     </div>
   );
-}
+  };
+};
 
 export default App;
