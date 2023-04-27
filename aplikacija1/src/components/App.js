@@ -52,30 +52,26 @@ import KorisnikDjete from './KorisnikDjete';
 
 
 // App je bila funkcija, sada je klasa... zbog zadatka 5.8
-class App extends React.Component {
+function App() {
 
-  state = {
-    korisnici : [
+  const [korisnici, setKorisnici] = React.useState ([
       {ime: "Marko", godine: 27},
       {ime: "Katarina", godine: 21},
       {ime: "Nataša", godine: 20},
       {ime: "Sunčica", godine: 5}
-    ],
-    dodatni_tekst : "Ona voli plivati i gnjuriti."
-  };
+    ])
 
-  promjeniGodine = () => {
-    const {korisnici} = this.state;
+  const promjeniGodine = () => {
+    //const {korisnici} = this.state;
     const novikorisnici = korisnici.map( korisnik =>
       {
       return {...korisnik, godine: korisnik.godine + 1 }
       }
       );
-      this.setState({korisnici: novikorisnici});
+      setKorisnici(novikorisnici);
   }
 
-  render() {
-  const {korisnici, dodatni_tekst} = this.state;
+  //const {korisnici, dodatni_tekst} = this.state;
 
   var zbroj = sum(10, 12) * pi;
   var rndStr = randomstring.generate();
@@ -115,15 +111,14 @@ class App extends React.Component {
       <WelcomeFunkcija/>
       <WelcomeKlasa/>
 
-      <KorisnikKlasa ime={korisnici[0].ime} godine={korisnici[0].godine} onButtonClick={this.promjeniGodine}/>
-      <KorisnikKlasa ime={korisnici[1].ime} godine={korisnici[1].godine} onButtonClick={this.promjeniGodine}/>
+      <KorisnikKlasa ime={korisnici[0].ime} godine={korisnici[0].godine} onButtonClick={promjeniGodine}/>
+      <KorisnikKlasa ime={korisnici[1].ime} godine={korisnici[1].godine} onButtonClick={promjeniGodine}/>
       <KorisnikFunkcija ime={korisnici[2].ime} godine={korisnici[2].godine}/>
       <KorisnikDjete ime={korisnici[3].ime} godine={korisnici[3].godine}>
-        {dodatni_tekst}
+        Neki tekst
       </KorisnikDjete>
     </div>
   );
-  };
 };
 
 export default App;
