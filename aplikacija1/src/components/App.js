@@ -71,10 +71,24 @@ function App() {
       setKorisnici(novikorisnici);
   }
 
+//5.10
+  const promijeniIme = event => {
+    const najnovikorisnici = korisnici.map(korisnik =>
+      {
+        var rndName = randomstring.generate({
+          length: 8
+        });
+        return {...korisnik, ime: rndName}
+      });
+      setKorisnici(najnovikorisnici);
+  }
+
   //const {korisnici, dodatni_tekst} = this.state;
 
   var zbroj = sum(10, 12) * pi;
-  var rndStr = randomstring.generate();
+  var rndStr = randomstring.generate({
+    length: 8,
+  });
   console.log(rndStr);
   var od = oduzmi(num1, num2);
 
@@ -113,7 +127,7 @@ function App() {
 
       <KorisnikKlasa ime={korisnici[0].ime} godine={korisnici[0].godine} onButtonClick={promjeniGodine}/>
       <KorisnikKlasa ime={korisnici[1].ime} godine={korisnici[1].godine} onButtonClick={promjeniGodine}/>
-      <KorisnikFunkcija ime={korisnici[2].ime} godine={korisnici[2].godine}/>
+      <KorisnikFunkcija ime={korisnici[2].ime} godine={korisnici[2].godine} onNameChange={promijeniIme}/>
       <KorisnikDjete ime={korisnici[3].ime} godine={korisnici[3].godine}>
         Neki tekst
       </KorisnikDjete>
