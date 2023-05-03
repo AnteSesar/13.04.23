@@ -6,7 +6,7 @@ export default function KorisnikFunkcija({ime, godine, onNameChange}) {
             <input
                 type="text"
                 value={ime}
-                onChange={onNameChange}
+                onChange={onNameChange} 
             />
         </div>
     );

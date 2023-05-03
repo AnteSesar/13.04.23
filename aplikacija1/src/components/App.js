@@ -28,8 +28,14 @@ import { WelcomeKlasa } from "./WelcomeKlasa"
 import KorisnikKlasa from './KorisnikKlasa';
 import KorisnikFunkcija from './KorisnikFunkcija';
 import KorisnikDjete from './KorisnikDjete';
+import Korisnik from './korisnik';
 
 //5.9
+//?
+
+// //5.13
+// import KorisnikFunkcija from './KorisnikFunkcija';
+
 
 
 ////
@@ -52,57 +58,76 @@ import KorisnikDjete from './KorisnikDjete';
 
 
 // App je bila funkcija, sada je klasa... zbog zadatka 5.8
-function App() {
+export default class App extends React.Component {
 
-  const [korisnici, setKorisnici] = React.useState ([
-      {ime: "Marko", godine: 27},
-      {ime: "Katarina", godine: 21},
-      {ime: "Nataša", godine: 20},
-      {ime: "Sunčica", godine: 5}
-    ])
+  state = {
+    korisnici: [
+      {id: 1, ime: "Goran", godine: 30},
+      {id: 2, ime: "Nataša", godine: 20},
+      {id: 3, ime: "Josipa", godine: 22},
+      {id: 4, ime: "Katarina", godine: 23}
+    ]
+  };
 
-  const promjeniGodine = () => {
-    //const {korisnici} = this.state;
-    const novikorisnici = korisnici.map( korisnik =>
-      {
-      return {...korisnik, godine: korisnik.godine + 1 }
-      }
-      );
-      setKorisnici(novikorisnici);
-  }
+  handleNameChange = (event, index) => {
+    console.log("handleNameChange");
+    const {korisnici} = this.state;
+    const noviKorisnici = [...korisnici];
+    noviKorisnici[index].name = event.target.value;
+    this.setState({korisnici: noviKorisnici});
+    console.log("handleNameChange1");
+  };
+ 
+//   const [korisnici, setKorisnici] = React.useState ([
+//       {ime: "Marko", godine: 27},
+//       {ime: "Katarina", godine: 21},
+//       {ime: "Nataša", godine: 20},
+//       {ime: "Sunčica", godine: 5}
+//     ])
 
-//5.10
-  const promijeniIme = event => {
-    const najnovikorisnici = korisnici.map(korisnik =>
-      {
-        var rndName = randomstring.generate({
-          length: 8
-        });
-        return {...korisnik, ime: rndName}
-      });
-      setKorisnici(najnovikorisnici);
-  }
+//   const promjeniGodine = () => {
+//     //const {korisnici} = this.state;
+//     const novikorisnici = korisnici.map( korisnik =>
+//       {
+//       return {...korisnik, godine: korisnik.godine + 1 }
+//       }
+//       );
+//       setKorisnici(novikorisnici);
+//   }
 
-  //const {korisnici, dodatni_tekst} = this.state;
+// //5.10
+//   const promijeniIme = event => {
+//     const najnovikorisnici = korisnici.map(korisnik =>
+//       {
+//         var rndName = randomstring.generate({
+//           length: 8
+//         });
+//         return {...korisnik, ime: rndName}
+//       });
+//       setKorisnici(najnovikorisnici);
+//   }
 
-  var zbroj = sum(10, 12) * pi;
-  var rndStr = randomstring.generate({
-    length: 8,
-  });
-  console.log(rndStr);
-  var od = oduzmi(num1, num2);
+//   //const {korisnici, dodatni_tekst} = this.state;
 
-  /////
-  //5.5
-  var prva = "prvi-text";
-  var druga = "drugi-text";
+//   var zbroj = sum(10, 12) * pi;
+//   var rndStr = randomstring.generate({
+//     length: 8,
+//   });
+//   console.log(rndStr);
+//   var od = oduzmi(num1, num2);
+
+//   /////
+//   //5.5
+//   var prva = "prvi-text";
+//   var druga = "drugi-text";
 
 
 
-
+render(){
+  const {korisnici} = this.state;
   return (
     <div className="App">
-      <header className="App-header">
+       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           {mojaVariabla}, {rndStr}, {person.name}, {zbroj}, {od}
@@ -130,9 +155,13 @@ function App() {
       <KorisnikFunkcija ime={korisnici[2].ime} godine={korisnici[2].godine} onNameChange={promijeniIme}/>
       <KorisnikDjete ime={korisnici[3].ime} godine={korisnici[3].godine}>
         Neki tekst
-      </KorisnikDjete>
-    </div>
+      </KorisnikDjete>  */}
+      {korisnici.map((korisnik, index) => (
+      <KorisnikFunkcija key={korisnik.id} ime={korisnik.ime} godine={korisnik.godine} onNameChange={event => this.handleNameChange(event, index)}/>
+      ))}
+      </div>
   );
-};
+}
+}
 
-export default App;
+// export default App;
